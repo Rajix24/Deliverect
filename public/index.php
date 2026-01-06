@@ -1,6 +1,5 @@
 <?php
-include './vendor/autoload.php';
-?>
+include './vendor/autoload.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +40,7 @@ include './vendor/autoload.php';
                     <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
                     <li class="nav-item"><a class="btn btn-outline-primary ms-lg-3"
                             href="./App/pages/login.php">Login</a></li>
-                    <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="./App/pages/signIn.php">Get
+                    <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="../App/pages/signInl">Get
                             Started</a></li>
                 </ul>
             </div>
