@@ -1,5 +1,9 @@
 <?php
-include './vendor/autoload.php';?>
+include '../vendor/autoload.php';
+use Config\Database;
+use App\Models\User;
+var_dump(Database::connect());
+?>
 <!DOCTYPE html>
 <html lang="en">
 

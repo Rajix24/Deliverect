@@ -58,5 +58,8 @@ class User{
 
         return $this;
     }
+        public function test(){
+        return "hi";
+    }
 }
 
