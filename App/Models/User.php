@@ -1,17 +1,18 @@
 <?php
 namespace App\Models;
-class User{
+use App\Service\CrudUser;
+class User extends CrudUser{
     private $name;
     private $email;
     private $pass;
     private $role;
 
-    public function __construct($name, $email, $pass, $role) {
-        $this->name = $name;
-        $this->email = $email;
-        $this->pass = $pass;
-        $this->role = $role;
-    }
+    // public function __construct($name, $email, $pass, $role) {
+    //     $this->name = null;
+    //     $this->email = null;
+    //     $this->pass = null;
+    //     $this->role = null;
+    // }
 
     public function getName()
     {

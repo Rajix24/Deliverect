@@ -40,47 +40,33 @@
                 <h3 class="text-center mb-2">Create Account</h3>
                 <p class="text-center text-muted mb-4">Join our delivery network today.</p>
                 
-                <form>
+                <form method="post" action="../App/Controller/handleSingIn.php">
                     <div class="mb-3">
                         <label for="fullName" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="John Doe" required>
+                        <input type="text" name="name" class="form-control" id="fullName" placeholder="John Doe" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
                     </div>
                     
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Create a strong password" required>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Create a strong password" required>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Repeat your password" required>
-                    </div>
-
-                    <div class="mb-4 form-check">
-                        <input type="checkbox" class="form-check-input" id="terms" required>
-                        <label class="form-check-label small" for="terms">
-                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-                        </label>
-                    </div>
-
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg">Create Account</button>
+                        <button type="submit" name="submit" class="btn btn-primary btn-lg">Create Account</button>
                     </div>
                 </form>
-                
                 <div class="mt-4 text-center">
-                    <p class="mb-0">Already have an account? <a href="login.html" class="fw-bold">Login</a></p>
+                    <p class="mb-0">Already have an account? <a href="login.php" class="fw-bold">Login</a></p>
                 </div>
             </div>
         </div>
         
         <div class="text-center mt-3">
-            <a href="../../index.html" class="text-muted small text-decoration-none">← Back to Home</a>
+            <a href="../public/index.php" class="text-muted small text-decoration-none">← Back to Home</a>
         </div>
     </div>
 </div>

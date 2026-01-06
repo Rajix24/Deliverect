@@ -1,8 +1,6 @@
 <?php
 include '../vendor/autoload.php';
-use Config\Database;
-use App\Models\User;
-var_dump(Database::connect());
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,9 +41,8 @@ var_dump(Database::connect());
                     <li class="nav-item"><a class="nav-link" href="#features">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
                     <li class="nav-item"><a class="btn btn-outline-primary ms-lg-3"
-                            href="./App/pages/login.php">Login</a></li>
-                    <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="../App/pages/signInl">Get
-                            Started</a></li>
+                            href="../view/login.php">Login</a></li>
+                    <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="../views/signIn.html">Get Started</a></li>
                 </ul>
             </div>
         </div>
@@ -57,7 +54,7 @@ var_dump(Database::connect());
                 <h1 class="display-3 fw-bold text1 mb-4">Fastest Delivery in Your City</h1>
                 <p class="lead mb-5 text1">From groceries to documents, we deliver everything safely and on time.</p>
                 <div class="d-flex justify-content-center gap-3">
-                    <a href="./App/pages/login.php" class="btn btn-primary btn-lg px-4">Log In</a>
+                    <a href="../view/login.php" class="btn btn-primary btn-lg px-4">Log In</a>
                     <a href="#how-it-works" class="btn btn-light btn-lg px-4">Learn More</a>
                 </div>
             </div>
