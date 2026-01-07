@@ -4,14 +4,21 @@ use Config\Database;
 use\PDO;
 
 class CrudUser{
-    public function save ($username,$address ,$email, $password) {
+    protected $username;
+    protected $address;
+    protected $email; 
+    protected $password;
+    protected $role;
+    public function save () {
         $conn = Database::connect();
-        $sql = 'INSERT INTO users (username, address, email, password) VALUES (:username, :address, :email , :password)';
+        $sql = "INSERT INTO users (username, address, email, password, role_id)
+        VALUES (:username, :address, :email, :password, :role_id)"; 
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':address', $address);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':username', $this->username);
+        $stmt->bindParam(':address', $this->address);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':password', $this->password);
+        $stmt->bindParam(':role', $this->role);
         $stmt->execute();
     }
     public function findOne($id){
@@ -36,14 +43,14 @@ class CrudUser{
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
-        public function update($id, $username, $address , $email, $password){
+        public function update($id){
         $conn = Database::connect();
         $sql = 'UPDATE users SET username = :username, address = :address ,email = :email , password = :password WHERE id = '.$id;
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':address', $$address);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':username', $this->username);
+        $stmt->bindParam(':address', $this->address);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':password', $this->password);
         $stmt->execute();
     }
 

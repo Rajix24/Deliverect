@@ -2,10 +2,6 @@
 namespace App\Models;
 use App\Service\CrudUser;
 class User extends CrudUser{
-    private $name;
-    private $email;
-    private $pass;
-    private $role;
 
     // public function __construct($name, $email, $pass, $role) {
     //     $this->name = null;
@@ -13,15 +9,20 @@ class User extends CrudUser{
     //     $this->pass = null;
     //     $this->role = null;
     // }
+    
 
     public function getName()
     {
-        return $this->name;
+        return $this->username;
     }
     public function setName($name)
     {
-        $this->name = $name;
-
+        $REG = '^[a-zA-Z][a-zA-Z0-9_]{2,19}$';
+        if (preg_match($name, $REG)) {
+                $this->name = $name;
+            } else {
+                return "Plase Enter valid userName";
+            }
         return $this;
     }
     public function getEmail()
@@ -30,22 +31,25 @@ class User extends CrudUser{
     }
     public function setEmail($email)
     {
-        $this->email = $email;
-
+            if (preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
+                $this->email = $email;
+            } else {
+                return "Invalid email! pls Enter Email exist";
+            }
         return $this;
     }
 
 
     public function getPass()
     {
-        return $this->pass;
+        return $this->password;
     }
 
     public function setPass($pass)
     {
-        $this->pass = $pass;
-
-        return $this;
+        $pass = password_hash($pass , PASSWORD_DEFAULT);
+        $this->password = $pass;
+       return $this;
     }
 
     public function getRole()
@@ -59,8 +63,7 @@ class User extends CrudUser{
 
         return $this;
     }
-        public function test(){
-        return "hi";
-    }
+
+
 }
 

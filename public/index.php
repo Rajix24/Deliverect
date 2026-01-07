@@ -1,5 +1,12 @@
 <?php
 include '../vendor/autoload.php';
+use App\Models\User;
+$younes = new User(); 
+// $younes->setName("younes Rajix");
+// $younes->setEmail("raji@gmail.com");
+// $younes->setPass("123");
+// $younes->setRole(1);
+// $younes->save();
 
 ?>
 <!DOCTYPE html>
