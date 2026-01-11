@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,7 @@
         .input-group-text { background-color: #f8f9fa; border: none; }
         .form-control, .form-select { 
             border: none; 
-            background-color: #f8f9fa; 
+            background-color: #f8f9fa;  
             padding: 12px;
         }
         .form-control:focus {
@@ -42,7 +46,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 
-                <form action="my-orders.html">
+                <form action="./../App/Controller/HandleCommand.php">
                     <div class="card shadow-sm mb-4">
                         <div class="card-body p-4">
                             <h6 class="section-title"><i class="bi bi-box-seam me-2"></i>Product Information</h6>
@@ -54,18 +58,18 @@
                                 </div>
                                 
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Category</label>
-                                    <select class="form-select">
-                                        <option selected>Electronics</option>
-                                        <option>Food & Beverage</option>
-                                        <option>Documents</option>
-                                        <option>Clothing</option>
-                                        <option>Fragile Items</option>
+                                    <label class="form-label fw-bold">Vehicule</label>
+                                    <select name="vehicules" class="form-select">
+                                        <option selected value="1">Car</option>
+                                        <option value="2">Vans</option>
+                                        <option value="3">trucks</option>
+                                        <option value="4">bicycles</option>
+                                        <option value="5" >Motorcycle</option>
                                     </select>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Weight Approx.</label>
+                                    <label class="form-label fw-bold">Price</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" placeholder="0.5">
                                         <span class="input-group-text">DH</span>
@@ -93,7 +97,19 @@
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
-                        <a href="home.php" class="text-decoration-none text-muted fw-bold">Back</a>
+                        <a href="<?php
+                            // session_start(); 
+                            // var_dump($_SESSION);
+                            if ($_SESSION['role'] == 2) {
+                                echo './client.php';
+                            }elseif ($_SESSION['role'] == 3) {
+                                echo './livreur.php';
+                            }       
+                            if ($_SESSION['role'] == 1) {
+                                echo './admin/php';
+                            }
+                            ?>" 
+                        class="text-decoration-none text-muted fw-bold">Back</a>
                         <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill shadow">
                             Confirm and Send <i class="bi bi-arrow-right ms-2"></i>
                         </button>

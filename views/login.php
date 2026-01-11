@@ -1,3 +1,10 @@
+<?php
+require_once '../vendor/autoload.php';
+use App\Controller\HandleLogIn;
+$check = new HandleLogIn();
+$check->checkUser();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +41,7 @@
             <div class="card p-4">
                 <div class="card-body">
                     <h3 class="text-center mb-4">Login</h3>
-                    <form action="../App/Controller/HandleLogIn.php" method="post" >
+                    <form action="./login.php" method="post" >
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email" required>

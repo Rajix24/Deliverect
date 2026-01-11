@@ -9,7 +9,7 @@ class CrudUser{
     protected $address;
     protected $email; 
     protected $password;
-    protected $role;
+    protected $role_id;
     public function save () {
         $conn = Database::connect();
         $sql = "INSERT INTO users (username, address, email, password, role_id)
@@ -19,15 +19,16 @@ class CrudUser{
         $stmt->bindParam(':address', $this->address);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
-        $stmt->bindParam(':role_id', $this->role);
+        $stmt->bindParam(':role_id', $this->role_id);
         $stmt->execute();
         echo "testing";
     }
     public function findOne($email){
         $conn = Database::connect();
-        $sql = 'SELECT * FROM users WHERE email ='.$email.'LIMIT 1 ';
+        $sql = 'SELECT * FROM users WHERE email = "' .$email. '" LIMIT 1';
         $stmt = $conn->prepare($sql);
         $stmt->execute(); 
+        // var_dump($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
         $data = $stmt->fetch();
         return $data;

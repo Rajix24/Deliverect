@@ -1,9 +1,10 @@
 <?php
 require_once  '../vendor/autoload.php';
-use Config\Database;
-session_start();
-session_unset();
-session_destroy();
+use App\Controller\HandleLogIn;
+$checkUser = new HandleLogIn();
+// $checkUser->checkSession();
+// session_unset();
+// session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">

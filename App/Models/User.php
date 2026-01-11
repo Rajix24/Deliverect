@@ -45,18 +45,16 @@ class User extends CrudUser{
 
     public function getRole()
     {
-        return $this->role;
+        return $this->role_id;
     }
 
-    public function setRole($role)
+    public function setRole($role_id)
     {
-        $this->role = $role;
+        $this->role_id = $role_id;
 
         return $this;
     }
-    public function sayhi (){
-        return "hi";
-    }
+
 
     public function getAddress()
     {

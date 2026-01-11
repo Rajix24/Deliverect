@@ -4,15 +4,15 @@ use Config\Database;
 use PDO;
 
 class CrudCommand{
-    public function save ($name,$description ,$price, $user_id, $vehicle_id) {
+    public function save ($name,$description ,$price, $client_id, $vehicule_id) {
         $conn = Database::connect();
-        $sql = 'INSERT INTO command (name, description, price, user_id, vehicle_id) VALUES (:name, :description, :price , :user_id, :vehicle_id)';
+        $sql = 'INSERT INTO commands (name, description, price, client_id, vehicule_id) VALUES (:name, :description, :price , :client_id, :vehicule_id)';
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':username', $name);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':user_id', $user_id);
-        $stmt->bindParam(':dommand_id', $vehicle_id);
+        $stmt->bindParam(':client_id', $client_id);
+        $stmt->bindParam(':vehicule_id', $vehicule_id);
         $stmt->execute();
     }
     public function findOne($id){

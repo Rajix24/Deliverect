@@ -48,5 +48,5 @@ class Command extends CrudCommand{
     }
 
 }
-$obj = new Command('send email', 'about email', 123);
-var_dump($obj);
+// $obj = new Command('send email', 'about email', 123);
+// var_dump($obj);

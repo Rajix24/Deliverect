@@ -1,6 +1,7 @@
 <?php
     require_once '../vendor/autoload.php';
-
+    session_start();
+    var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -156,7 +157,7 @@
                     <div class="card-body">
                         <h5>Need a delivery?</h5>
                         <p class="small opacity-75">Send documents, packages, or food anywhere in the city instantly.</p>
-                        <a href="./CreateDomand.php" class="btn btn-light w-100 fw-bold py-2 mt-2">
+                        <a href="./CreateDommand.php" class="btn btn-light w-100 fw-bold py-2 mt-2">
                             <i class="bi bi-plus-circle me-2"></i>New Delivery
                         </a>
                     </div>
