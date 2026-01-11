@@ -27,22 +27,22 @@
 
 <body>
     <div class="text-center mb-4">
-        <a href="../../index.html" class="brand-logo">Deliverect</a>
+                    <a class="navbar-brand fw-bold text-primary" href="#">Deliverect</a>
     </div>
     <div class="container d-flex justify-content-center">
         <div class="login-container w-100">
             <div class="card p-4">
                 <div class="card-body">
                     <h3 class="text-center mb-4">Login</h3>
-                    <form>
+                    <form action="../App/Controller/HandleLogIn.php" method="post" >
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter your Email" required>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Enter your password"
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password"
                                 required>
                         </div>
 
@@ -52,13 +52,12 @@
                         </div>
 
                         <div class="d-grid">
-                            <!-- <button type="submit" class="btn btn-primary btn-lg">Log In</button> -->
-                            <a type="submit" class="btn btn-primary btn-lg" href="./home.php">Log In</a>
+                            <button type="submit" name="submit" class="btn btn-primary">Log In</button>
                         </div>
                     </form>
 
                     <div class="mt-3 text-center">
-                        <p class="small">Don't have an account? <a href="#">Register here</a></p>
+                        <p class="small">Don't have an account? <a href="./signIn.php">Register here</a></p>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,10 @@ class Offer extends CrudOffre{
     private $name;
     private $description;
     private $price;
-     
+    
+    public function test(){
+        return 'holla form Offer';
+    }
  
     public function __construct($name, $description, $price){
         $this->name = $name;

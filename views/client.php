@@ -1,8 +1,6 @@
 <?php
     require_once '../vendor/autoload.php';
-    use App\Controller\HandleSingIn;
-    $conn = new HandleSingIn();
-    $conn->create();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

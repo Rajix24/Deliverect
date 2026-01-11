@@ -1,7 +1,8 @@
 <?php
 namespace App\Service; 
+use App\Models\User;
 use Config\Database;
-use\PDO;
+use PDO;
 
 class CrudUser{
     protected $username;
@@ -18,15 +19,17 @@ class CrudUser{
         $stmt->bindParam(':address', $this->address);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
-        $stmt->bindParam(':role', $this->role);
+        $stmt->bindParam(':role_id', $this->role);
         $stmt->execute();
+        echo "testing";
     }
-    public function findOne($id){
+    public function findOne($email){
         $conn = Database::connect();
-        $sql = 'SELECT * FROM users WHERE id ='.$id;
+        $sql = 'SELECT * FROM users WHERE email ='.$email.'LIMIT 1 ';
         $stmt = $conn->prepare($sql);
         $stmt->execute(); 
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
+        $data = $stmt->fetch();
         return $data;
     }
         public function getALL(){
@@ -34,7 +37,8 @@ class CrudUser{
         $sql = "SELECT * FROM users;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
+        $data = $stmt->fetchAll();
         return $data;
     }
         public function delete($id){
@@ -53,5 +57,7 @@ class CrudUser{
         $stmt->bindParam(':password', $this->password);
         $stmt->execute();
     }
+
+
 
 }

@@ -2,26 +2,17 @@
 namespace App\Models;
 use App\Service\CrudUser;
 class User extends CrudUser{
-
-    // public function __construct($name, $email, $pass, $role) {
-    //     $this->name = null;
-    //     $this->email = null;
-    //     $this->pass = null;
-    //     $this->role = null;
-    // }
-    
-
     public function getName()
     {
         return $this->username;
     }
-    public function setName($name)
+    public function setName($username)
     {
-        $REG = '^[a-zA-Z][a-zA-Z0-9_]{2,19}$';
-        if (preg_match($name, $REG)) {
-                $this->name = $name;
+        // $REG = '^[a-zA-Z][a-zA-Z0-9_]{2,19}$';
+        if (preg_match('/^[a-zA-Z0-9_]{3,20}$/', $username)) {
+                $this->username = $username;
             } else {
-                return "Plase Enter valid userName";
+                header("location: ../../public/index.php?username=iValide username");
             }
         return $this;
     }
@@ -34,7 +25,7 @@ class User extends CrudUser{
             if (preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
                 $this->email = $email;
             } else {
-                return "Invalid email! pls Enter Email exist";
+                header("location: ../../index.php?username=inValide email");
             }
         return $this;
     }
@@ -63,7 +54,22 @@ class User extends CrudUser{
 
         return $this;
     }
+    public function sayhi (){
+        return "hi";
+    }
 
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
 
 }
 

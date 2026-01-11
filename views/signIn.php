@@ -40,18 +40,29 @@
                 <h3 class="text-center mb-2">Create Account</h3>
                 <p class="text-center text-muted mb-4">Join our delivery network today.</p>
                 
-                <form method="post" action="../App/Controller/handleSingIn.php">
+                <form method="post" action="../views/home.php">
                     <div class="mb-3">
                         <label for="fullName" class="form-label">Full Name</label>
-                        <input type="text" name="name" class="form-control" id="fullName" placeholder="John Doe" required>
+                        <input type="text" name="username" class="form-control" id="fullName" placeholder="John Doe" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address" class="form-label">Enter address</label>
+                        <input type="text" name="address" class="form-control"  placeholder="Address" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
                     </div>
-                    
-                    <div class="mb-3">
+                    <div class="mb-3>
+                        <label for="role" class="form-label">Select Role</label>
+                        <select id="role" name="role" class="form-select">
+                            <option selected disabled>User</option>
+                            <option value="2">User</option>
+                            <option value="3">livreur</option>
+                        </select>
+                    </div>
+                    <div class="mb-3  my-3 ">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control" id="password" placeholder="Create a strong password" required>
                     </div>

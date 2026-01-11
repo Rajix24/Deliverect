@@ -1,28 +1,7 @@
 <?php
 namespace Config;
-use \PDO;
+use PDO;
 class Database{
-
-    // private static ?Database $instance = null;
-    // private ?PDO $pdo;
-
-    // private function __construct(){
-    //     $this->pdo = new PDO("mysql:host=localhost;dbname=deliverect", 'root', '');
-    // }
-
-    // public static function getInstance(): Database{
-    //     if(self::$instance == null){
-    //         self::$instance = new Database();
-    //     }
-    //     return self::$instance;
-    // }
-
-
-    //     public function getConnection(): PDO{
-            
-    //     return $this->pdo;
-    // }
-
     private static $conn = null;
     private function __construct(){}
 

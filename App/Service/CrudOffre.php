@@ -1,7 +1,7 @@
 <?php
 namespace App\Service;
 use Config\Database;
-use\PDO;
+use PDO;
 
 class CrudOffre{
     public function save ($name,$description ,$price, $user_id, $dommand_id) {

@@ -1,13 +1,9 @@
 <?php
-include '../vendor/autoload.php';
-use App\Models\User;
-$younes = new User(); 
-// $younes->setName("younes Rajix");
-// $younes->setEmail("raji@gmail.com");
-// $younes->setPass("123");
-// $younes->setRole(1);
-// $younes->save();
-
+require_once  '../vendor/autoload.php';
+use Config\Database;
+session_start();
+session_unset();
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,8 +44,8 @@ $younes = new User();
                     <li class="nav-item"><a class="nav-link" href="#features">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
                     <li class="nav-item"><a class="btn btn-outline-primary ms-lg-3"
-                            href="../view/login.php">Login</a></li>
-                    <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="../views/signIn.html">Get Started</a></li>
+                            href="../views/login.php">Login</a></li>
+                    <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="../views/signIn.php">Get Started</a></li>
                 </ul>
             </div>
         </div>
@@ -61,7 +57,7 @@ $younes = new User();
                 <h1 class="display-3 fw-bold text1 mb-4">Fastest Delivery in Your City</h1>
                 <p class="lead mb-5 text1">From groceries to documents, we deliver everything safely and on time.</p>
                 <div class="d-flex justify-content-center gap-3">
-                    <a href="../view/login.php" class="btn btn-primary btn-lg px-4">Log In</a>
+                    <a href="../views/login.php" class="btn btn-primary btn-lg px-4">Log In</a>
                     <a href="#how-it-works" class="btn btn-light btn-lg px-4">Learn More</a>
                 </div>
             </div>
