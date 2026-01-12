@@ -1,7 +1,12 @@
 <?php
     require_once '../vendor/autoload.php';
+    use App\Controller\HandleCommand;
+    use App\Models\Command;
     session_start();
-    var_dump($_SESSION);
+    $getCommands = new Command();
+    // var_dump($_SESSION);
+    $dataCommand = $getCommands->getALL($_SESSION['id']);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +118,7 @@
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="fw-bold mb-0">Recent Deliveries</h5>
+                            <h5 class="fw-bold mb-0">Your Commands</h5>
                             <button class="btn btn-sm btn-outline-primary">View All</button>
                         </div>
                         <div class="table-responsive">
@@ -121,30 +126,22 @@
                                 <thead class="text-muted small uppercase">
                                     <tr>
                                         <th>Order ID</th>
-                                        <th>Destination</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
+                                        <th>name</th>
+                                        <th>Description</th>
+                                        <th>price</th>
+                                        <th>status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php for ($i=0; $i <count($dataCommand); $i++):?>
                                     <tr>
-                                        <td><strong>#DLV-8821</strong></td>
-                                        <td>Rue de Paris, Casablanca</td>
-                                        <td>Dec 28, 2023</td>
-                                        <td><span class="bg-info bg-opacity-10 text-info order-status fw-bold"><a href="MyOrder.php">View</a></span></td>
+                                        <td><strong><?=$dataCommand[$i]->id ?></strong></td>
+                                        <td><?= $dataCommand[$i]->getName() ?></td>
+                                        <td><?= $dataCommand[$i]->getDescription()?></td>
+                                        <td><?= $dataCommand[$i]->getPrice()?></td>
+                                        <td><span class="bg-info bg-opacity-10 text-info order-status fw-bold"><a><?=$dataCommand[$i]->getStatus();?></a></span></td>
                                     </tr>
-                                    <tr>
-                                        <td><strong>#DLV-8740</strong></td>
-                                        <td>Hay Riad, Rabat</td>
-                                        <td>Dec 27, 2023</td>
-                                        <td><span class="bg-success bg-opacity-10 text-success order-status fw-bold">Delivered</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>#DLV-8611</strong></td>
-                                        <td>Gueliz, Marrakech</td>
-                                        <td>Dec 26, 2023</td>
-                                        <td><span class="bg-danger bg-opacity-10 text-danger order-status fw-bold">Cancelled</span></td>
-                                    </tr>
+                                        <?php endfor ?>
                                 </tbody>
                             </table>
                         </div>

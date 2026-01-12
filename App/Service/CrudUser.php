@@ -5,6 +5,7 @@ use Config\Database;
 use PDO;
 
 class CrudUser{
+    protected $id;
     protected $username;
     protected $address;
     protected $email; 
@@ -58,6 +59,8 @@ class CrudUser{
         $stmt->bindParam(':password', $this->password);
         $stmt->execute();
     }
+
+
 
 
 

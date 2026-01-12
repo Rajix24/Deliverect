@@ -1,3 +1,16 @@
+<?php
+    require_once '../vendor/autoload.php';
+    use App\Controller\HandleCommand;
+    use App\Models\Command;
+    session_start();
+    $getCommands = new Command();
+    // var_dump($_SESSION);
+    $dataCommand = $getCommands->getAllCommand();
+    // echo '<pre>';
+    //     var_dump($dataCommand);
+    // echo '</pre>';
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,11 +89,9 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Orders Table -->
             <div class="card">
                 <div class="card-header">
-                    My Orders
+                    My Offers
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-bordered table-hover">
@@ -88,28 +99,58 @@
                             <tr>
                                 <th>#</th>
                                 <th>Client</th>
-                                <th>Address</th>
+                                <th>Description</th>
+                                <th>price</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php for ($i=0; $i <count($dataCommand) ; $i++):?>  
                             <tr>
-                                <td>1</td>
-                                <td>Ahmed</td>
-                                <td>Casablanca</td>
-                                <td><span class="badge bg-warning">Pending</span></td>
+                                <td><?=$i+1;?></td>
+                                <td><?=$dataCommand[$i]->getName();?></td>
+                                <td><?=$dataCommand[$i]->getDescription()?></td>
+                                <td><?=$dataCommand[$i]->getPrice()?></td>
+                                <td><span class="badge bg-warning"><?=$dataCommand[$i]->getStatus()?></span></td>
                                 <td>
-                                    <button class="btn btn-success btn-sm">Mark Delivered</button>
+                                    <a href="./makeOffer.php?<?=$dataCommand[$i]->getId()?>" class="btn btn-success btn-sm">Mark Delivered</a>
                                 </td>
                             </tr>
+                            <?php endfor ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="card">
+                <div class="card-header">
+                    commands availible
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-dark">
                             <tr>
-                                <td>2</td>
-                                <td>Yassine</td>
-                                <td>Rabat</td>
-                                <td><span class="badge bg-success">Delivered</span></td>
-                                <td>-</td>
+                                <th>#</th>
+                                <th>Client</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            <?php for ($i=0; $i <count($dataCommand) ; $i++):?>  
+                            <tr>
+                                <td><?=$i+1;?></td>
+                                <td><?=$dataCommand[$i]->getName();?></td>
+                                <td><?=$dataCommand[$i]->getDescription()?></td>
+                                <td><span class="badge bg-warning"><?=$dataCommand[$i]->getStatus()?></span></td>
+                                <td>
+                                    <a href="./makeOffer.php?<?=$dataCommand[$i]->getId()?>" class="btn btn-success btn-sm">Mark Delivered</a>
+                                </td>
+                            </tr>
+                            <?php endfor ?>
                         </tbody>
                     </table>
                 </div>

@@ -1,6 +1,17 @@
 <?php
+    require_once '../vendor/autoload.php';
+    use App\Service\CrudUser;
+    use App\Controller\HandleCommand;
     session_start();
-    var_dump($_SESSION);
+
+    if (!empty($_POST)) {
+        $get_id = new CrudUser();
+        $dataUser = $get_id->findOne($_SESSION['email']);
+        $_SESSION['id'] = $dataUser->id;
+        $command = new HandleCommand();
+        $command->insterCommand();
+        header("location: ./client.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,15 +57,14 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 
-                <form action="./../App/Controller/HandleCommand.php">
+                <form action="./CreateDommand.php" method="post">
                     <div class="card shadow-sm mb-4">
                         <div class="card-body p-4">
                             <h6 class="section-title"><i class="bi bi-box-seam me-2"></i>Product Information</h6>
-                            
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label class="form-label fw-bold">Item Name</label>
-                                    <input type="text" class="form-control" placeholder="What are you sending? (e.g. Laptop, Flowers)" required>
+                                    <input type="text" name="name" class="form-control" placeholder="What are you sending? (e.g. Laptop, Flowers)" required>
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -71,14 +81,14 @@
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold">Price</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control" placeholder="0.5">
+                                        <input type="number" name="price" class="form-control" placeholder="0.5">
                                         <span class="input-group-text">DH</span>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <label class="form-label fw-bold">Detailed Product Description</label>
-                                    <textarea class="form-control" rows="4" placeholder="Mention size, color, or special handling (e.g. 'The box is 30x30cm, please do not flip it upside down')"></textarea>
+                                    <textarea name="description" class="form-control" rows="4" placeholder="Mention size, color, or special handling (e.g. 'The box is 30x30cm, please do not flip it upside down')"></textarea>
                                 </div>
                             </div>
                         </div>

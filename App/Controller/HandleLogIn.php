@@ -17,15 +17,19 @@ class HandleLogIn{
     public function checkUser(){
         $user = new User();
         $data = $user->findOne($_POST['email']);
-        // var_dump($data);
         if ($data == false){
-            // header("location: ./login.php?error = your accoute not found pleas sign in");
             return ;
         }
+        echo '<pre>';
+        var_dump($data);
+        echo '</pre>';
+
+        var_dump($_SESSION);
         session_start();
         $_SESSION['username'] = $data->getName();
         $_SESSION['email'] = $data->getEmail();
         $_SESSION['role'] = $data->getRole();
+        $_SESSION['id'] = $data->getId();   
         $role = new HandleRole();
         $role->checkRole($data->getRole());
     }

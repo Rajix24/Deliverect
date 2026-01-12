@@ -2,6 +2,7 @@
 namespace App\Controller;
 use App\Models\User;
 use App\Controller\HandleRole;
+use App\Service\CrudUser;
 class HandleSingIn{
     private  $conn;
 
@@ -15,7 +16,10 @@ class HandleSingIn{
         $handler->save();
         $role = new HandleRole();
         $role->checkRole($_POST['role']);
+        $user = new CrudUser();
+        $datauser = $user->findOne($_POST['email']);
         session_start();
+        $_SESSION['id'] = $datauser->getId();
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['email'] = $_POST['email'];
         if ($_POST['role'] == 2) {
